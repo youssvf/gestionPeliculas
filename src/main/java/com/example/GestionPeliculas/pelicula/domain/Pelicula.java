@@ -4,10 +4,10 @@ public class Pelicula {
     private Integer id, duracion;
     private String nombre;
 
-    public Pelicula(Integer id, Integer duracion, String nombre) {
+    public Pelicula(Integer id, String nombre,Integer duracion) {
         this.id = id;
-        this.duracion = duracion;
         this.nombre = nombre;
+        this.duracion = duracion;
     }
 
     public Integer getId() {

@@ -18,11 +18,18 @@ public class PeliculasRepositorySQL implements PeliculasRepository{
         List<Pelicula> peliculas = new ArrayList<>();
         try {
             Statement statement = DBConecction.getInstance().createStatement();
-            ResultSet rs = statement.executeQuery("select id_pelicula,nombre,duracion from peliculas;");
+            ResultSet rs = statement.executeQuery("select id_pelicula,nombre,duracion from peliculas where id_usuario = " + id +";");
+            while (rs.next()){
+                peliculas.add(new Pelicula(
+                        rs.getInt("id_pelicula"),
+                        rs.getString("nombre"),
+                        rs.getInt("duracion")
+                ));
+            }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return peliculas;
     }
 
     @Override

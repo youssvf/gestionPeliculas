@@ -3,10 +3,7 @@ package com.example.GestionPeliculas.usuario.infrastructure;
 import com.example.GestionPeliculas.usuario.application.UsuarioUseCases;
 import com.example.GestionPeliculas.usuario.domain.Usuario;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +23,10 @@ public class UsuariosRestController {
     @PostMapping(path ="/usuarios", consumes = MediaType.APPLICATION_JSON_VALUE)
     public List<Usuario> save(@RequestBody Usuario usuario){
         return this.usuarioUseCases.save(usuario.getId(),usuario.getNombre());
+    }
+
+    @PutMapping("/usuarios/{id}")
+    public Usuario update(@PathVariable Integer id,@RequestBody String nombre){
+        return this.usuarioUseCases.update(id,nombre);
     }
 }

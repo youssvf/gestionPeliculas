@@ -33,9 +33,8 @@ public class UsuarioRepositorySQL implements UsuariosRepository {
     public List<Usuario> save(Integer id, String nombre) {
         List<Usuario> usuarios = new ArrayList<>();
         try {
-            PreparedStatement statement = DBConecction.getInstance().prepareStatement("insert into usuarios values(?,?)");
-            statement.setInt(1,id);
-            statement.setString(2,nombre);
+            PreparedStatement statement = DBConecction.getInstance().prepareStatement("insert into usuarios(nombre) values(?)");
+            statement.setString(1,nombre);
 
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -49,7 +48,8 @@ public class UsuarioRepositorySQL implements UsuariosRepository {
     @Override
     public Usuario update(Integer id,String nombre) {
         try {
-            PreparedStatement statement = DBConecction.getInstance().prepareStatement("update usuarios set ");
+            PreparedStatement statement = DBConecction.getInstance().prepareStatement("update usuarios set nombre = ? where id = ?");
+
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }

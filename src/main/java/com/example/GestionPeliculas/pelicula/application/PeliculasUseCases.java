@@ -16,8 +16,8 @@ public class PeliculasUseCases {
     public List<Pelicula> getAll(Integer id){
         return this.peliculasRepository.getAll(id);
     }
-    public List<Pelicula> save(Integer id,String nombre, Integer duracion){
-        return this.peliculasRepository.save(id,nombre,duracion);
+    public List<Pelicula> save(Integer id,Pelicula pelicula){
+        return this.peliculasRepository.save(id,pelicula);
     }
     public List<Pelicula> update(Integer id, String nombre){
         return this.peliculasRepository.update(id,nombre);
